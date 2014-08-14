@@ -93,8 +93,7 @@ function goog_new_env(
   return env;
 }
 
-function main() {
-  var base = "file:///home/ubolonton/Programming/projects/cljs-xulrunner/";
+function main(base) {
   var baseURL = base + "build/goog/";
   var depsURL = base + "build/deps.js";
 
@@ -104,5 +103,3 @@ function main() {
 
   return env;
 }
-
-// b = loadScript("file:///home/ubolonton/Programming/projects/cljs-xulrunner/src/js/bootstrap.js")b = loadScript("file:///home/ubolonton/Programming/projects/cljs-xulrunner/src/js/bootstrap.js");
