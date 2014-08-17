@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/clojurescript "0.0-2311"]
-                 [com.cemerick/piggieback "0.1.3"]]
+                 [com.cemerick/piggieback "0.1.3"]
+                 [org.clojure/core.async "0.1.319.0-6b1aca-alpha"]]
 
   :source-paths ["src/clj"]
 

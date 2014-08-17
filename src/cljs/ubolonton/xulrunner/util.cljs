@@ -1,6 +1,6 @@
 (ns ubolonton.xulrunner.util
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
-  (:require [cljs.core.async :refer [<! >! put! timeout chan]]))
+  (:require [cljs.core.async :refer [<! >! put! timeout chan close!]]))
 
 (def Cc (.-classes js/Components))
 
@@ -25,20 +25,18 @@
       (as "nsIJSXMLHttpRequest")
       (as "nsIDOMEventTarget")))
 
-(defn post [url data]
-  (let [request (xml-http-request)
-        result (chan 1)]
+(defn post [url data response-channel]
+  (let [request (xml-http-request)]
     (doto request
-      (aset "onload" (fn [event]
-                       (put! result (.-responseText request))))
+      (.addEventListener
+       "load" (fn [event]
+                (if (= (.-status request) 200)
+                  (put! response-channel (.-responseText request))
+                  (close! response-channel))))
+      (.addEventListener
+       "error" (fn [event]
+                 (close! response-channel)))
       (aset "timeout" 50000)
       (.open "POST" url true)
       (.send data))
-    result))
-
-;;; Temp hack while piggy-backing on MozRepl for development Not
-;;; simply js/repl.print, because it's a method (using this), not a
-;;; function.
-(set-print-fn!
- (fn [str]
-   (js/repl.print str)))
+    response-channel))

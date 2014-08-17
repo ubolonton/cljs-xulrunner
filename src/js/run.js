@@ -7,17 +7,25 @@ let (
 ) {
   Services.scriptloader.loadSubScript(bootstrapModule, bootstrap);
   let env = bootstrap.main(base);
-  // let w = makeI().window;
-  // env.Element = w.Element;
-  // env.window = w;
-  // env.document = w.document;
+
+  // Piggyng-backing on ubolonton's specific conkeror's function. This is
+  // important to give the env some globals clojure.browser namespaces
+  // expect. XXX: Use standard XULRunner stuff instead
+  let w = makeI().window;
+  env.Element = w.Element;
+  env.window = w;
+  env.document = w.document;
+  env.setTimeout = w.setTimeout;
+
+  // MozREPL piggy-backing. TODO: Use own's REPL
   env.repl = repl;
+
   repl.enter(env);
 };
 
 // Try these *after* running the above
 
-goog.require("ubolonton.xulrunner.util");
+goog.require("ubolonton.xulrunner.repl");
 
 cljs.core.println("?");
 
