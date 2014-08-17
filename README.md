@@ -16,7 +16,7 @@ lein cljsbuild once
 - Potentially have access to the whole XULRunner runtime, not just a page's context.
 
 ## TODOs
-- Fix prints scheduled timeout/interval being ignored. To be fair clojure.browser.repl has the same problem! As an aside, this is better solved on the printing side (in Clojure).
+- Fix prints scheduled by timeout/interval being ignored. To be fair clojure.browser.repl has the same problem! As an aside, this is better solved on the printing side (in Clojure).
 - Allow runtime addition of dependencies.
 - Make a REPL extension to stop piggy-backing on MozRepl..
 - Swap client-server role (XULRunner programs should be servers).

@@ -32,5 +32,5 @@ goog.require("ubolonton.xulrunner.repl");
 ubolonton.xulrunner.repl.connect("http://localhost:38746/7864/repl");
 
 // If you use a nrepl client (e.g. connecting to "lein repl" with
-// cider, turn off pretty printing, as clojure.pprint has not been
+// cider), turn off pretty printing, as clojure.pprint has not been
 // implemented for Clojurescript
