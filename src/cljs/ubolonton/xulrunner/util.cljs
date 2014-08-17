@@ -1,4 +1,4 @@
-(ns ubolonton.cljs-xulrunner.util
+(ns ubolonton.xulrunner.util
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.core.async :refer [<! >! put! timeout chan]]))
 

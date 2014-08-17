@@ -1,4 +1,4 @@
-(ns ubolonton.cljs-xulrunner
+(ns ubolonton.xulrunner
   (:require [cemerick.austin.repls :as repls]
             [cemerick.austin :as austin]))
 

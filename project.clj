@@ -1,4 +1,4 @@
-(defproject org.ubolonton/cljs-xulrunner "0.1.0-SNAPSHOT"
+(defproject org.ubolonton/xulrunner "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
@@ -13,9 +13,9 @@
             ;; [com.cemerick/austin "0.1.3"]
             ]
 
-  ;; :repl-options {:init-ns ubolonton.cljs-xulrunner}
+  ;; :repl-options {:init-ns ubolonton.xulrunner}
 
-  :profiles {:dev {:repl-options {:init-ns ubolonton.cljs-xulrunner}
+  :profiles {:dev {:repl-options {:init-ns ubolonton.xulrunner}
                    :plugins [[com.cemerick/austin "0.1.3"]]}}
 
   :cljsbuild

@@ -17,11 +17,11 @@ let (
 
 // Try these *after* running the above
 
-goog.require("ubolonton.cljs_xulrunner.util");
+goog.require("ubolonton.xulrunner.util");
 
 cljs.core.println("?");
 
-// ubolonton.cljs_xulrunner.util
+// ubolonton.xulrunner.util
 
 
 // clojure.browser.repl.connect("http://localhost:40208/9405");
