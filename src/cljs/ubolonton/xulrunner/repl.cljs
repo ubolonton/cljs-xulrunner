@@ -52,16 +52,17 @@
       (close! print))))
 
 ;;; XXX: Monkey-patch clojure.browser.repl/repl-print
-;; (aset js/clojure.browser.repl "repl_print"
-;;       (fn [data]
-;;         (put! (:print @connections)
-;;               (repl/wrap-message :print (pr-str data)))))
+(aset js/clojure.browser.repl "repl_print"
+      (fn [data]
+        (util/log "repl:printing" data)
+        (put! (:print @connections) (pr-str data))))
 
 ;;; Temp hack while piggy-backing on MozRepl for development Not
 ;;; simply js/repl.print, because it's a method (using this), not a
 ;;; function.
-(defn log [str]
-  (js/repl.print str))
-(set-print-fn! log)
+(comment
+  (defn log [str]
+    (js/repl.print str))
+  (set-print-fn! log)
 
-(aset js/clojure.browser.repl "repl_print" log)
+  (aset js/clojure.browser.repl "repl_print" log))
