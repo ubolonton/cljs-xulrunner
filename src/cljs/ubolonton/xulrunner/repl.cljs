@@ -39,9 +39,15 @@
     (go-loop [code (<! incoming)]
       ;; XXX: repl/evaluate-javascript takes conn but does nothing
       ;; with it, we just pass it nil
+      (util/log "repl:got code" code)
       (when-not (nil? code)
-        (>! result (repl/evaluate-javascript nil code))
+        ;; XXX: This should not be here. But where?
+        (when-not (= code "ignore__")
+          (util/log "repl:executing")
+          (>! result (repl/evaluate-javascript nil code))
+          (util/log "repl:executed"))
         (recur (<! incoming)))
+      (util/log "repl:closing")
       (close! result)
       (close! print))))
 
