@@ -18,6 +18,7 @@ lein cljsbuild once
 - Add other transports (TCP, WebSockets).
 - Set it up so that `goog.require` can load from jar files.
 - Add more introspection features.
+- Firefox dev tool!
 
 ## Copyright and license
 
