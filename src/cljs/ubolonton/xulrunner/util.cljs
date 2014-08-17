@@ -39,3 +39,7 @@
       (.open "POST" url true)
       (.send data))
     response-channel))
+
+(defn log [& args]
+  (js/repl.print
+   (str ">>>" (apply str (interleave (repeat " ") args)))))

@@ -21,14 +21,18 @@
                                     :result result}))
     ;; Server-communication loop
     (go-loop [data (repl/wrap-message :ready "ready")]
+      (util/log "net:posting" data)
       (util/post repl-server-url data incoming)
+      (util/log "net:waiting for response")
       (alt!
         result
         ([value _]
+           (util/log "chan:sending result" value)
            (if-not (nil? value)
              (recur (repl/wrap-message :result value))))
         print
         ([value _]
+           (util/log "chan:sending print" value)
            (if-not (nil? value)
              (recur (repl/wrap-message :print value))))))
     ;; REPL loop
