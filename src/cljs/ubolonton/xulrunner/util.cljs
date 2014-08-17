@@ -36,7 +36,6 @@
       (.addEventListener
        "error" (fn [event]
                  (close! response-channel)))
-      (aset "timeout" 50000)
       (.open "POST" url true)
       (.send data))
     response-channel))
